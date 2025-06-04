@@ -1,0 +1,22 @@
+# Node.js и зависимые библиотеки
+node_modules/
+
+# Лог-файлы
+*.log
+
+# Локальные файлы IDE (VS Code, WebStorm и др.)
+.idea/
+.vscode/
+
+# Файлы системы (для MacOS, например)
+.DS_Store
+
+# Локальные файлы окружения (например, для хранения API-ключей)
+*.env
+
+# Временные файлы редакторов (например, Sublime Text, Vim)
+*.swp
+*.swo
+
+# Системные файлы Windows (если вы на Windows)
+Thumbs.db

