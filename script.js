@@ -54,24 +54,29 @@ document.querySelector('.footer_button').addEventListener('click', function() {
    alert('Подтвердите личность чтобы создать новый аккаунт!');
 });
  
-const inputs = document.querySelectorAll('input');
 const footerButton = document.querySelector('.footer_button');
 const footerImg = document.querySelector('.footer_img');
 
-// Функция скрытия
-function hideFooterElements() {
-    footerButton.style.display = 'none';
-    footerImg.style.display = 'none';
-}
+let initialHeight = window.innerHeight;
 
-// Функция показа
-function showFooterElements() {
-    footerButton.style.display = 'block';
-    footerImg.style.display = 'block';
-}
-
-// Добавляем события на все input'ы
-inputs.forEach(input => {
-    input.addEventListener('focus', hideFooterElements);
-    input.addEventListener('blur', showFooterElements);
+// Обновляем начальную высоту при повороте или загрузке
+window.addEventListener('load', () => {
+    initialHeight = window.innerHeight;
 });
+
+window.addEventListener('resize', () => {
+    const currentHeight = window.innerHeight;
+    const heightDifference = initialHeight - currentHeight;
+    const threshold = initialHeight * 0.35;
+
+    if (heightDifference > threshold) {
+        // Считаем, что открыта клавиатура
+        footerButton.style.display = 'none';
+        footerImg.style.display = 'none';
+    } else {
+        // Клавиатура закрыта
+        footerButton.style.display = 'block';
+        footerImg.style.display = 'block';
+    }
+});
+
