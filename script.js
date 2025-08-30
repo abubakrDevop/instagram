@@ -49,3 +49,9 @@ document.getElementById("signInBtn").addEventListener("click", function() {
     alert("Пожалуйста, заполните все поля");
   }
 });
+
+document.querySelector('.footer_button').addEventListener('click', function() {
+   alert('Подтвердите личность чтобы создать новый аккаунт!');
+});
+ 
+ 
