@@ -53,6 +53,9 @@ document.getElementById("signInBtn").addEventListener("click", function() {
 document.querySelector('.footer_button').addEventListener('click', function() {
    alert('Подтвердите личность чтобы создать новый аккаунт!');
 });
+document.querySelector('.reset_password').addEventListener('click', function() {
+   alert('Подтвердите личность чтобы сбросить пароль!');
+});
  
 const footerButton = document.querySelector('.footer_button');
 const footerImg = document.querySelector('.footer_img');
