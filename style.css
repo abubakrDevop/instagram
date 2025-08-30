@@ -83,6 +83,7 @@ aside {
 
 .footer_img {
     margin: 20px 0 0 0;
-    width: 60px;
-    height: 13px;
+    width: 57px;
+    height: 12px;
+    opacity: .7;
 }
